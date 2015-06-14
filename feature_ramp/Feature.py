@@ -128,9 +128,6 @@ class Feature(object):
         redis.delete(key)
         redis.srem(Feature._get_redis_set_key(), key)
 
-        if key in Feature._local_cache:
-            del Feature._local_cache[key]
-
     def set_percentage(self, percentage):
         """ Ramps the feature to the given percentage.
 
@@ -212,9 +209,6 @@ class Feature(object):
         # needing to search all Redis keys with a * which is slow.
         set_key = Feature._get_redis_set_key()
         redis.sadd(set_key, key)
-
-        if key in Feature._local_cache:
-            del Feature._local_cache[key]
 
     def _get_redis_key(self):
         """ Returns the key used in Redis to store a feature's information, with namespace. """
