@@ -1,5 +1,7 @@
 import json
-# import redis
+
+from feature_ramp import redis
+
 
 class Feature(object):
     """
