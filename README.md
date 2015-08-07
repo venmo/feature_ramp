@@ -1,4 +1,6 @@
 # Feature Ramp
 [![Build Status](https://travis-ci.org/venmo/feature_ramp.svg?branch=master)](https://travis-ci.org/venmo/feature_ramp)
 
-Supports toggling and ramping features via a lightweight Redis backend.
+Owners: [Amanda Schloss](https://github.com/amandaschloss) & [Anthony Yim](https://github.com/anthonyyim)
+
+Supports toggling and ramping features via a lightweight Redis backend. Originally designed and built by [Amanda Schloss](https://github.com/amandaschloss) at Venmo.
