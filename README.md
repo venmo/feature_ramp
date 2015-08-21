@@ -5,6 +5,10 @@ Supports [feature toggling](http://martinfowler.com/bliki/FeatureToggle.html) an
 
 Installation
 ------------------
+``` python
+$ sudo pip install feature_ramp  # currently NOT supported until PyPI approves this package
+```
+
 Feature ramp requires requires a running Redis server. If your application is written in Python, we recommend using [redis-py](https://github.com/andymccurdy/redis-py) for a convenient way to interface with Redis. To install Redis, follow the [Redis Quick Start](http://redis.io/topics/quickstart).
 
 Once you have redis-py and a Redis server running, you're ready to start using Feature Ramp.
