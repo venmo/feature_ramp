@@ -27,3 +27,7 @@ True
 >>> feature_a.is_active
 False
 ```
+
+Contact
+----------------
+[Amanda Schloss](https://github.com/amandaschloss) or [Anthony Yim](https://github.com/anthonyyim)
