@@ -9,6 +9,8 @@ Feature ramp requires requires a running Redis server. If your application is wr
 
 Once you have redis-py and a Redis server running, you're ready to start using Feature Ramp.
 
+NOTE: Feature Ramp assumes your Redis server is running at localhost on port 6379 (this is the default redis-py configuration). To customize this, make the necessary edits [here](https://github.com/venmo/feature_ramp/blob/8a49785961fcbb01299329e9a1a994ed6a7b4f34/feature_ramp/__init__.py#L3).
+
 Getting Started
 -----------------
 ``` python
