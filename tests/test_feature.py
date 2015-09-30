@@ -92,17 +92,17 @@ class FeatureTest(TestCase):
         self.assertFalse('blacklist' in all_features['looktest1'])
 
         self.assertTrue('whitelist' in all_features['looktest2'])
-        self.assertEqual(all_features['looktest2']['whitelist'], [3])
+        self.assertEqual(all_features['looktest2']['whitelist'], set([3]))
         self.assertFalse('blacklist' in all_features['looktest2'])
 
         self.assertFalse('whitelist' in all_features['looktest3'])
         self.assertTrue('blacklist' in all_features['looktest3'])
-        self.assertEqual(all_features['looktest3']['blacklist'], [4,5])
+        self.assertEqual(all_features['looktest3']['blacklist'], set([4, 5]))
 
         self.assertTrue('whitelist' in all_features['looktest4'])
-        self.assertEqual(all_features['looktest4']['whitelist'], [3, 5])
+        self.assertEqual(all_features['looktest4']['whitelist'], set([3, 5]))
         self.assertTrue('blacklist' in all_features['looktest4'])
-        self.assertEqual(all_features['looktest4']['blacklist'], [4])
+        self.assertEqual(all_features['looktest4']['blacklist'], set([4]))
 
     def test_set_add(self):
         """ Tests that creating a feature stores its key in a Redis set. """
