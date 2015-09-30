@@ -20,7 +20,7 @@ class FeatureTest(TestCase):
     def test_initialize_feature_with_default_percentage(self):
         feature_test = Feature("testing", default_percentage=100)
 
-        self.assertEquals(feature_test.percentage, 100)
+        self.assertEqual(feature_test.percentage, 100)
 
     def test_reset_settings(self):
         """ Tests calling reset_settings resets the correct
@@ -82,7 +82,7 @@ class FeatureTest(TestCase):
         all_features = Feature.all_features(include_data=True)
         self.assertEqual(len(all_features), 4)
 
-        for key in ['looktest1','looktest2','looktest3','looktest4']:
+        for key in ['looktest1', 'looktest2', 'looktest3', 'looktest4']:
             self.assertTrue(key in all_features)
             if not key == 'looktest1':
                 self.assertEqual(all_features[key]['percentage'], 100)
@@ -316,7 +316,6 @@ class FeatureTest(TestCase):
         self.feature_test.set_percentage(100)
         self.assertTrue(self.feature_test._is_ramped(5))
 
-
     def test_is_ramped_using_string(self):
         """Tests that _is_ramped accepts strings as identifier."""
         self.feature_test.set_percentage(100)
@@ -344,9 +343,9 @@ class FeatureTest(TestCase):
         identifiers = range(1, 10001)
 
         visibility_test_one = [id for id in identifiers
-                                if feature_one.is_visible(id)]
+                               if feature_one.is_visible(id)]
 
         visibility_test_two = [id for id in identifiers
-                                if feature_two.is_visible(id)]
+                               if feature_two.is_visible(id)]
 
         self.assertEqual(visibility_test_one, visibility_test_two)

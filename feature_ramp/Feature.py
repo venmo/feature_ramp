@@ -253,4 +253,8 @@ class Feature(object):
     def __str__(self):
         """ Pretty print the feature and some stats """
         stats = self._get_redis_data()
-        return "Feature: {0}\nwhitelisted: {1}\nblacklisted: {2}\npercentage: {3}\n".format(self.feature_name, stats['whitelist'], stats['blacklist'], stats['percentage'])
+        return "Feature: {0}\nwhitelisted: {1}\nblacklisted: {2}\npercentage: {3}\n".format(
+            self.feature_name,
+            stats['whitelist'],
+            stats['blacklist'],
+            stats['percentage'])
