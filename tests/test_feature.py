@@ -152,6 +152,16 @@ class FeatureTest(TestCase):
         self.feature_test.add_to_whitelist(email)
         self.assertTrue(email in Feature("testing").whitelist)
 
+    def test_add_to_whitelist_with_duplicate(self):
+        """ Tests calling add_to_whitelist doesn't set duplicate
+        data. """
+
+        self.feature_test.add_to_whitelist(3)
+        self.feature_test.add_to_whitelist(3)
+        self.assertEqual(
+            len([id for id in Feature("testing").whitelist if id == 3]),
+            1)
+
     def test_remove_from_whitelist(self):
         """ Tests calling remove_from_whitelist sets the correct
         data in Redis. """
@@ -181,6 +191,16 @@ class FeatureTest(TestCase):
         email = 'example@example.com'
         self.feature_test.add_to_blacklist(email)
         self.assertTrue(email in Feature("testing").blacklist)
+
+    def test_add_to_blacklist_with_duplicate(self):
+        """ Tests calling add_to_blacklist doesn't set duplicate
+        data. """
+
+        self.feature_test.add_to_blacklist(3)
+        self.feature_test.add_to_blacklist(3)
+        self.assertEqual(
+            len([id for id in Feature("testing").blacklist if id == 3]),
+            1)
 
     def test_remove_from_blacklist(self):
         """ Tests calling remove_from_blacklist sets the correct
