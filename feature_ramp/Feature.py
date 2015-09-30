@@ -36,8 +36,8 @@ class Feature(object):
         redis_raw = redis.get(key)
         redis_data = self._deserialize(redis_raw)
 
-        self.whitelist = redis_data.get('whitelist', [])
-        self.blacklist = redis_data.get('blacklist', [])
+        self.whitelist = set(redis_data.get('whitelist', []))
+        self.blacklist = set(redis_data.get('blacklist', []))
         self.percentage = redis_data.get('percentage', default_percentage)
 
     def is_visible(self, identifier):
@@ -119,8 +119,8 @@ class Feature(object):
         """
 
         self.percentage = 0
-        self.whitelist = []
-        self.blacklist = []
+        self.whitelist = set([])
+        self.blacklist = set([])
         self._save()
 
     def delete(self):
@@ -148,7 +148,7 @@ class Feature(object):
     def add_to_whitelist(self, identifier):
         """ Whitelist the given identifier to always see the feature regardless of ramp. """
 
-        self.whitelist.append(identifier)
+        self.whitelist.add(identifier)
         self._save()
 
     def remove_from_whitelist(self, identifier):
@@ -160,7 +160,7 @@ class Feature(object):
     def add_to_blacklist(self, identifier):
         """ Blacklist the given identifier to never see the feature regardless of ramp. """
 
-        self.blacklist.append(identifier)
+        self.blacklist.add(identifier)
         self._save()
 
     def remove_from_blacklist(self, identifier):
@@ -235,8 +235,8 @@ class Feature(object):
         """ Returns the dictionary representation of this object for storage in Redis. """
 
         return {
-            'whitelist': self.whitelist,
-            'blacklist': self.blacklist,
+            'whitelist': list(self.whitelist),
+            'blacklist': list(self.blacklist),
             'percentage': self.percentage
         }
 
